@@ -25,14 +25,18 @@ data "aws_ami" "amazon_linux" {
     }
 }
 
-locals {
-    name_tag = var.instance_type == "t3.micro" ? "Micro Instance" : "Other Instance"    
+resource "aws_s3_bucket" "hayze_bucket" {
+    bucket = var.bucket_name
+    tags = {
+        Name = "MyS3Bucket"
+    }
 }
 
 resource "aws_instance" "my_ec2" {
     ami = data.aws_ami.amazon_linux.id
     instance_type = var.instance_type
     tags = {
-        Name = local.name_tag
+        Name = var.instance_name
     }
+    depends_on = [ aws_s3_bucket.hayze_bucket ]
 }

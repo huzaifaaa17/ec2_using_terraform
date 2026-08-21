@@ -9,3 +9,7 @@ variable "instance_type" {
 variable "instance_name" {
     default     = "hayze_terraform"
 }
+
+variable "bucket_name" {
+    default     = "hayze-bucket-terraform2006"
+}
