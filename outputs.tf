@@ -2,8 +2,6 @@
 #     value = aws_s3_bucket.hayze_bucket.bucket
 #  }
 
-#WORKSPACES
-
-output "workspace_name" {
-    value = terraform.workspace
+output "vpc_id" {
+  value = module.vpc.vpc_id
 }
